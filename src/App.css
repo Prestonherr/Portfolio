@@ -17,14 +17,15 @@ nav {
   border-bottom: 1px solid #1e1e1e;
 }
 
-main, footer {
+main,
+footer {
   position: relative;
   z-index: 1;
 }
 
 nav .container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   height: 60px;
 }
@@ -89,7 +90,6 @@ section:first-of-type {
   justify-content: center;
   width: 100%;
 }
-
 
 .glitch-name {
   display: inline-block;

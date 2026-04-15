@@ -11,9 +11,9 @@ function randomGlyph() {
 }
 
 const TARGET_CHARS = TARGET.split("");
-const NON_SPACE_INDICES = TARGET_CHARS
-  .map((c, i) => (c !== " " ? i : -1))
-  .filter((i) => i >= 0);
+const NON_SPACE_INDICES = TARGET_CHARS.map((c, i) =>
+  c !== " " ? i : -1,
+).filter((i) => i >= 0);
 
 function GlitchName() {
   const [charStates, setCharStates] = useState(() =>
@@ -21,7 +21,7 @@ function GlitchName() {
       display: char === " " ? " " : randomGlyph(),
       locked: false,
       lockVersion: 0,
-    }))
+    })),
   );
   const [started, setStarted] = useState(false);
   const frameRef = useRef(0);
@@ -48,14 +48,18 @@ function GlitchName() {
 
           const pos = NON_SPACE_INDICES.indexOf(i);
           const lockFrame = Math.round(
-            (pos / NON_SPACE_INDICES.length) * totalFrames * 0.85
+            (pos / NON_SPACE_INDICES.length) * totalFrames * 0.85,
           );
 
           if (frame >= lockFrame) {
-            return { display: char, locked: true, lockVersion: state.lockVersion + 1 };
+            return {
+              display: char,
+              locked: true,
+              lockVersion: state.lockVersion + 1,
+            };
           }
           return { ...state, display: randomGlyph() };
-        })
+        }),
       );
 
       if (frame >= totalFrames) clearInterval(intervalRef.current);
@@ -75,7 +79,7 @@ function GlitchName() {
         >
           {state.display}
         </span>
-      )
+      ),
     );
 
   return (
@@ -212,7 +216,6 @@ function App() {
       <SmokeBackground />
       <nav>
         <div className="container">
-          <span className="logo">Preston Herr</span>
           <ul>
             <li>
               <a href="#about">About</a>
@@ -238,11 +241,6 @@ function App() {
               <GlitchName />
             </h1>
             <p className="tagline">Software engineer</p>
-          </div>
-          <div className="container hero-body">
-            <a href="#projects" className="cta">
-              See my work
-            </a>
           </div>
         </section>
 
