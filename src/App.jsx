@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import "./App.css";
+import SmokeBackground from "./SmokeBackground";
 
 const TARGET = "Preston Herr";
 const GLYPHS = "アカサタナハマヤラワ々仝〆ヲΛЖѪϞฬ༒༄⟟⟒⟟爻卂尺片";
@@ -208,6 +209,7 @@ function ContactForm() {
 function App() {
   return (
     <>
+      <SmokeBackground />
       <nav>
         <div className="container">
           <span className="logo">Preston Herr</span>
