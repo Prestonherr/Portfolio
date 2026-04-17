@@ -1,0 +1,112 @@
+.connect__social-links {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.connect__social-link {
+  color: var(--text-subtle);
+  display: flex;
+  align-items: center;
+  transition:
+    color 0.2s,
+    transform 0.2s;
+}
+
+.connect__social-link:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.connect__intro {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+
+.connect-form {
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.connect-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.connect-form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.connect-form__label {
+  font-size: 0.875rem;
+  color: var(--text-subtle);
+}
+
+.connect-form__input {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-family: inherit;
+  padding: 0.6rem 0.85rem;
+  transition: border-color 0.2s, background-color 0.3s ease;
+  resize: vertical;
+}
+
+.connect-form__input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.connect-form__input::placeholder {
+  color: var(--text-placeholder);
+}
+
+.connect-form__submit {
+  align-self: flex-start;
+  background-color: var(--accent);
+  border: none;
+  border-radius: 6px;
+  color: var(--accent-on);
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.65rem 1.5rem;
+  transition: background-color 0.2s;
+}
+
+.connect-form__submit:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+}
+
+.connect-form__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.connect-form__feedback {
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.connect-form__feedback--success {
+  color: var(--success);
+}
+
+.connect-form__feedback--error {
+  color: var(--error);
+}
+
+@media (max-width: 520px) {
+  .connect-form__row {
+    grid-template-columns: 1fr;
+  }
+}

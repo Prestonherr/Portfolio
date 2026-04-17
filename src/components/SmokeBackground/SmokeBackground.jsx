@@ -1,7 +1,14 @@
 import { useEffect, useRef } from "react";
+import { useTheme } from "../../context/ThemeContext";
 
 export default function SmokeBackground() {
   const canvasRef = useRef(null);
+  const { theme } = useTheme();
+  const themeRef = useRef(theme);
+
+  useEffect(() => {
+    themeRef.current = theme;
+  }, [theme]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -22,7 +29,6 @@ export default function SmokeBackground() {
       }
 
       init(stagger = false) {
-        // Concentrate emitters toward the bottom-center, spread out a bit
         const spread = canvas.width * 0.55;
         this.x = canvas.width / 2 + (Math.random() - 0.5) * spread;
         this.y = canvas.height + Math.random() * 60;
@@ -37,12 +43,10 @@ export default function SmokeBackground() {
         this.opacity = 0;
         this.peakOpacity = Math.random() * 0.13 + 0.04;
 
-        // Each particle drifts with its own sine rhythm
         this.wobblePhase = Math.random() * Math.PI * 2;
         this.wobbleFreq = 0.008 + Math.random() * 0.012;
         this.wobbleAmp = 0.3 + Math.random() * 0.5;
 
-        // Grow a bit as it rises
         this.growRate = Math.random() * 0.08 + 0.03;
       }
 
@@ -68,13 +72,18 @@ export default function SmokeBackground() {
       }
 
       draw() {
+        const isLight = themeRef.current === "light";
+        const [c0, c1, c2] = isLight
+          ? ["30,30,30", "80,80,80", "120,120,120"]
+          : ["255,255,255", "210,210,210", "160,160,160"];
+
         const grad = ctx.createRadialGradient(
           this.x, this.y, 0,
           this.x, this.y, this.size
         );
-        grad.addColorStop(0,   `rgba(255,255,255,${this.opacity})`);
-        grad.addColorStop(0.3, `rgba(210,210,210,${this.opacity * 0.55})`);
-        grad.addColorStop(0.7, `rgba(160,160,160,${this.opacity * 0.15})`);
+        grad.addColorStop(0,   `rgba(${c0},${this.opacity})`);
+        grad.addColorStop(0.3, `rgba(${c1},${this.opacity * 0.55})`);
+        grad.addColorStop(0.7, `rgba(${c2},${this.opacity * 0.15})`);
         grad.addColorStop(1,   `rgba(0,0,0,0)`);
 
         ctx.beginPath();
@@ -84,7 +93,6 @@ export default function SmokeBackground() {
       }
     }
 
-    // Seed particles at random life offsets so the canvas isn't empty at load
     for (let i = 0; i < 55; i++) {
       particles.push(new Particle(true));
     }

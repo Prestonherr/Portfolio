@@ -1,0 +1,23 @@
+.resume__text {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.resume__btn {
+  display: inline-block;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.resume__btn:hover {
+  background-color: var(--accent);
+  color: var(--accent-on);
+  text-decoration: none;
+}

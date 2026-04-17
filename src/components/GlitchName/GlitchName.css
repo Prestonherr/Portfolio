@@ -1,0 +1,36 @@
+.glitch {
+  display: inline-block;
+  position: relative;
+}
+
+.glitch__text {
+  color: var(--text-primary);
+  -webkit-mask-image: linear-gradient(to right, var(--text-primary), rgba(255, 255, 255, 0.7));
+  mask-image: linear-gradient(to right, var(--text-primary), rgba(255, 255, 255, 0.7));
+}
+
+@keyframes char-scroll-in {
+  from {
+    transform: translateY(-0.75em);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.glitch__char--enter {
+  display: inline-block;
+  animation: char-scroll-in 180ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.glitch__glow {
+  position: absolute;
+  inset: 0;
+  filter: blur(18px);
+  opacity: 0.2;
+  color: var(--glitch-glow);
+  pointer-events: none;
+  -webkit-text-fill-color: var(--glitch-glow);
+}
