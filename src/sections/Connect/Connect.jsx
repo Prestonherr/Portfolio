@@ -8,7 +8,7 @@ export default function Connect() {
         <h2 className="section-title">Connect</h2>
         <div className="connect__social-links">
           <a
-            href="https://linkedin.com/in/prestonherr"
+            href="https://www.linkedin.com/in/preston-herr"
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"
@@ -25,7 +25,7 @@ export default function Connect() {
             </svg>
           </a>
           <a
-            href="https://github.com/prestonherr"
+            href="https://github.com/Prestonherr"
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
