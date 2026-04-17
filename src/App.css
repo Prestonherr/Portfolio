@@ -158,7 +158,7 @@ section:first-of-type {
 
 /* About */
 .about p {
-  max-width: 680px;
+  max-width: 900px;
   color: #ccc;
   font-size: 1.05rem;
   line-height: 1.8;
@@ -212,10 +212,11 @@ section:first-of-type {
   border-radius: 4px;
 }
 
-.project-card .links {
+.project-card .card-links {
   display: flex;
   gap: 1rem;
   font-size: 0.85rem;
+  margin-top: 1rem;
 }
 
 /* Resume */
@@ -243,7 +244,28 @@ section:first-of-type {
   text-decoration: none;
 }
 
-/* Contact */
+/* Connect */
+.social-links {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.social-link {
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  transition:
+    color 0.2s,
+    transform 0.2s;
+}
+
+.social-link:hover {
+  color: #7eb8f7;
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
 .contact-intro {
   color: #ccc;
   margin-bottom: 2rem;
