@@ -13,7 +13,9 @@ export function ThemeProvider({ children }) {
   }, [theme]);
 
   function toggleTheme() {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+    const next = theme === "dark" ? "light" : "dark";
+    localStorage.setItem("theme", next);
+    window.location.reload();
   }
 
   return (
