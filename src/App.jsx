@@ -1,7 +1,7 @@
 import "./App.css";
 import Header from "./components/Header/Header";
 import SmokeBackground from "./components/SmokeBackground/SmokeBackground";
-import Hero from "./sections/Hero/Hero";
+import Name from "./sections/Name/Name";
 import About from "./sections/About/About";
 import Projects from "./sections/Projects/Projects";
 import Resume from "./sections/Resume/Resume";
@@ -13,7 +13,7 @@ export default function App() {
       <SmokeBackground />
       <Header />
       <main>
-        <Hero />
+        <Name />
         <About />
         <Projects />
         <Resume />
