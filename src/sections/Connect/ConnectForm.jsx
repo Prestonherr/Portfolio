@@ -5,16 +5,27 @@ const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export default function ConnectForm() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [emailError, setEmailError] = useState("");
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
 
   function handleChange(e) {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+    if (name === "email") {
+      setEmailError(value && !EMAIL_RE.test(value) ? "Please enter a valid email address." : "");
+    }
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
+    if (!EMAIL_RE.test(form.email)) {
+      setEmailError("Please enter a valid email address.");
+      return;
+    }
     setStatus("sending");
     try {
       await emailjs.send(
@@ -49,7 +60,7 @@ export default function ConnectForm() {
         <div className="connect-form__group">
           <label className="connect-form__label" htmlFor="email">Email</label>
           <input
-            className="connect-form__input"
+            className={`connect-form__input${emailError ? " connect-form__input--invalid" : ""}`}
             id="email"
             name="email"
             type="email"
@@ -58,6 +69,9 @@ export default function ConnectForm() {
             placeholder="your@email.com"
             required
           />
+          {emailError && (
+            <p className="connect-form__feedback connect-form__feedback--error">{emailError}</p>
+          )}
         </div>
       </div>
       <div className="connect-form__group">
@@ -76,7 +90,7 @@ export default function ConnectForm() {
       <button
         type="submit"
         className="connect-form__submit"
-        disabled={status === "sending"}
+        disabled={status === "sending" || !!emailError || !form.email}
       >
         {status === "sending" ? "Sending…" : "Send Message"}
       </button>

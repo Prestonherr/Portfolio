@@ -92,6 +92,11 @@
   cursor: not-allowed;
 }
 
+.connect-form__input--invalid {
+  border-color: var(--error);
+  outline-color: var(--error);
+}
+
 .connect-form__feedback {
   font-size: 0.9rem;
   margin-top: 0.25rem;
