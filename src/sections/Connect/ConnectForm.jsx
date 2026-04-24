@@ -87,7 +87,7 @@ export default function ConnectForm() {
       )}
       {status === "error" && (
         <p className="connect-form__feedback connect-form__feedback--error">
-          Something went wrong. Please try again.
+          Something is wrong with the email service. I'll have to fix it. Please contact me another way.
         </p>
       )}
     </form>
